@@ -1,0 +1,12 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+Blazored modal test.
+
+<button @onclick="@(() => Modal.Show<TestComponent>("Test"))">Test</button>
+
+
+@code {
+    [CascadingParameter] public IModalService Modal { get; set; }
+}
