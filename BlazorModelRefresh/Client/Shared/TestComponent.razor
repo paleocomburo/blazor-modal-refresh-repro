@@ -1,15 +1,28 @@
 ﻿<div class="m-2">
     <form>
-        <p><b>Test</b></p>
+        <p><b>Field A</b></p>
+        <input type="text" size="75" class="form-control" @bind="FieldA" />
 
-        <button @onclick="Close">Close</button>
+        <p><b>Field B</b></p>
+        <input type="text" size="75" class="form-control" @bind="FieldB" />
 
-</form>
+        <button @onsubmit="() => Close()" @onsubmit:preventDefault @onclick="() => Close()" @onclick:preventDefault class="btn btn-primary">Ok</button>
+        <button @onclick="() => BlazoredModal.CancelAsync()" @onclick:preventDefault class="btn btn-secondary">Cancel</button>
+    </form>
 </div>
 
 @code {
     [CascadingParameter]
     BlazoredModalInstance BlazoredModal { get; set; }
+
+    [Parameter]
+    public string FieldA { get; set; }
+
+    [Parameter]
+    public string FieldB { get; set; }
+
+    [Parameter]
+    public string[] ArrayA { get; set; }
 
     private async Task Close() => await BlazoredModal.CloseAsync();
 }
